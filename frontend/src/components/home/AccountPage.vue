@@ -22,7 +22,7 @@
                             </v-list-item>
                             
                             <v-divider class="mx-4" style = "display : flex;"></v-divider>
-                            <v-row  v-for="item in test" :key="item"> 
+                            <v-row  v-for="item in cardList" :key="item"> 
                               <v-col cols="12" md="1">
                                 
                               </v-col>
@@ -30,17 +30,17 @@
                                 <v-icon>shop</v-icon>
                               </v-col>
                               <v-col cols="12" md="2">
-                                <v-img :src="item.img" width = "100px"></v-img>
+                                <v-img :src="item[3]" width = "100px"></v-img>
                               </v-col>
                               <v-col cols="12" md="4" style="text-align : center; margin-top : 25px;">
                                 <h2>
-                                  {{item.title}}
+                                  {{item[1]}}
                                 </h2>
                               </v-col>
                               <v-col cols="12" md="2">
                                 <v-btn style="text-align : center; margin-top : 25px; " color="blue white--text">
                                     <v-icon left small>done_outline</v-icon>
-                                      <spen @click="show(item.title, item.img)">개설</spen>
+                                      <spen @click="show(item[1], item[3])">개설</spen>
                                 </v-btn>
                               </v-col>
                             </v-row>
@@ -139,6 +139,7 @@ export default {
         { img: "card4.png", title: "  Green  체크카드" },
         { img: "card5.png", title: "아이행복 체크카드" },
       ],
+      cardList : [],
 
       title : "",
       card : "",
@@ -158,13 +159,14 @@ export default {
   },
   created() {
     this.getUserinfo();
-    
+    this.getCard();
   },
   
   methods: {
     ...mapActions([
       "USERINFO",
       "INSERT_ACCOUNT",
+      "GET_CARD",
       
       ]),
     
@@ -207,6 +209,14 @@ export default {
           this.finish = false;
           this.$router.push("/homePage");
         }, 1000);
+      })
+    },
+
+    async getCard() {
+      await this.GET_CARD().then((response) => {
+        
+        this.cardList = response.data;
+        console.log(this.cardList);
       })
     }
 

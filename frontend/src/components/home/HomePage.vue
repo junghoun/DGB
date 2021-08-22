@@ -9,7 +9,7 @@
           <v-container>
             <!-- 상단 설명란 -->
             <v-flex>
-              <v-card class="ma-5 text-center mt-10" shaped elevation="10" style="min-width : 400px">
+              <v-card class="ma-5 text-center mt-10" shaped elevation="10" >
                 <v-avatar class="mt-n7" size="80" elevation="10">
                   <v-img src="profile.gif"></v-img>
                 </v-avatar>
@@ -43,7 +43,7 @@
                 class="ma-5 mt-n1"
                 shaped
                 elevation="10"
-                style="height: 400px; min-width : 400px; overflow-y : auto"
+                style="height: 400px; overflow-y : auto"
                 
               >
               
@@ -96,7 +96,7 @@
               </v-card>
             </v-flex>
             <v-flex>
-              <v-card class="ma-5 mt-12" shaped elevation="10" style="min-width : 400px">
+              <v-card class="ma-5 mt-12" shaped elevation="10">
                 <v-list>
                   <v-list-item>
                     <v-list-item-avatar
@@ -120,8 +120,9 @@
       </v-flex>
 
       
+      
       <!-- ################################################################################################################################# -->
-      <v-flex md8 style = "margin-left : 100px;">
+      <v-flex md9 >
         <v-app
           :style="{ background: $vuetify.theme.themes.dark.background }"
           class="rounded"
@@ -131,7 +132,7 @@
             <v-flex>
               <!-- #################################### 대표계좌 ########################################################## -->
               <v-row>
-
+                
                 
                 <v-col cols="12" md="5" style = "min-width : 450px" v-if="count != 0">
                   <v-list class="mt-5" style="height: 30px">
@@ -227,7 +228,7 @@
                 </v-col>
 
                 <!-- #################################### 최근 거래내역 ########################################################## -->
-                <v-col cols="12" md="6" v-if="count != 0">
+                <v-col cols="12" md="5" v-if="count != 0">
                   <v-list class="mt-5" style="height: 30px">
                     <v-list-item>
                       <v-list-item-avatar
@@ -240,7 +241,7 @@
                     </v-list-item>
                     <v-list-item v-if="recordFive.length == 5">
                       <v-btn
-                        style="width: 20%; margin-left: 20px; margin-top: 20px"
+                        style="width: 25%; margin-left: 20px; margin-top: 20px"
                         to="/trans"
                         >거래내역 조회</v-btn
                       >

@@ -28,5 +28,6 @@ urlpatterns = [
     path('record/list/', views.recordlist),
     path('account/add/', views.addaccount),
     path('account/change/', views.change),
+    path('card/', views.card),
     
 ]

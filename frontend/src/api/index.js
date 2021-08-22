@@ -29,6 +29,7 @@ export const record = createInstanceWithAuth("record");
 export const adver = createInstanceWithAuth("adver");
 export const date = createInstanceWithAuth("date");
 export const account = createInstanceWithAuth("account");
+export const card = createInstanceWithAuth("card");
 
 
 //  < create - posts / post - posts / put - posts {id} / delete - posts {id} >

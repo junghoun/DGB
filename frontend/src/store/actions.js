@@ -12,6 +12,7 @@ import {fetchWeek} from "@/api/week";
 import {fetchRecord, fetchFive, getList} from "@/api/record";
 import { fetchAlladver, fetchGetadver } from "../api/adver";
 import { fetchDate } from "../api/date";
+import { fetchCard } from "../api/card";
 
 export default {
     // 로그인
@@ -117,4 +118,8 @@ export default {
       return getList({ accNum, day });
     },
 
+    // 카드 종류 가져오기
+    GET_CARD() {
+      return fetchCard();
+    },
 }

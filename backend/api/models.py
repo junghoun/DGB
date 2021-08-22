@@ -63,3 +63,10 @@ class Advertising(models.Model):
     def __str__(self):
         return f'aName : {self.aName}'
 
+
+# 계좌 상품
+class Card(models.Model) :
+    cId = models.AutoField(primary_key=True)
+    cName = models.CharField(max_length= 100)
+    contents = models.TextField(null = True)
+    img = models.CharField(max_length = 20)

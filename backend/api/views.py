@@ -8,8 +8,8 @@ from rest_framework import status       # response의 예외처리
 from datetime import datetime, timedelta
 
 from rest_framework.serializers import Serializer    # datetime : 시간관련 계산 / timedelta : 시간/날짜 빼기
-from .serializers import UserSerializer, AccountSerializer, AdvertisingSerializer
-from .models import User, Account, Advertising
+from .serializers import UserSerializer, AccountSerializer, AdvertisingSerializer, CardSerializer
+from .models import User, Account, Advertising, Card
 from django.db.models import Q       # 2개 이상 인자 비교해서 값 얻을 때 사용
 
 #token 관련 import
@@ -506,3 +506,29 @@ def change(request) :
     change.save()
 
     return Response(True)
+
+
+
+# 상품 들고오기
+@api_view(['GET'])
+def card(request) :
+
+    sql = "select * from api_card;"
+
+    conn = sqlite3.connect("db.sqlite3")
+    cursor = conn.cursor()
+
+    
+
+    cursor.execute(sql)
+
+    results = cursor.fetchall()
+    
+    print(results)
+
+    return Response(results)
+
+
+
+    
+
