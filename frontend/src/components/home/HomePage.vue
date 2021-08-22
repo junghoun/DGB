@@ -119,11 +119,13 @@
         </v-app>
       </v-flex>
 
+      
       <!-- ################################################################################################################################# -->
-      <v-flex md9>
+      <v-flex md8 style = "margin-left : 100px;">
         <v-app
           :style="{ background: $vuetify.theme.themes.dark.background }"
           class="rounded"
+          
         >
           <v-container style="font-family: 'Jua'; height: auto">
             <v-flex>
@@ -151,12 +153,12 @@
 
                       <v-list-item class="layout justify-center" style = "margin : -20px 0 20px 20px;">
                         <v-card-title>
-                          <v-img class="card" src="card2.png"></v-img>
+                          <v-img class="card" :src="mytitleaccount.card"></v-img>
                         </v-card-title>
                       </v-list-item>
                       <v-list-item class="layout justify-center" style = "margin : -20px 0 20px 20px;">
                         <v-card-title>
-                        {{mytitleaccount.accNum | acc}}
+                        {{mytitleaccount.accNum | acc}} 
                         </v-card-title>
                       </v-list-item>
                       <v-list-item class="layout justify-center" style = "margin : -20px 0 20px 20px;">
@@ -550,7 +552,7 @@
                           <v-col cols="12" sm="6" md="4"> </v-col>
                           <v-col cols="12" sm="6" md="3">
                             <v-list-item-title>
-                              {{ this.withdrawbalance || comma }} 원
+                              {{ this.withdrawbalance | comma }} 원
                             </v-list-item-title>
                           </v-col>
                           <v-col cols="12" sm="6" style = "font-size : 16px; margin-top : 20px;">
@@ -766,7 +768,7 @@ export default {
       recordMoney : 0,
       recordType : 0,
       recordFive : [],
-        
+      curcard : "",
       
 
     };
@@ -775,6 +777,7 @@ export default {
     this.getUserinfo();
     this.getCount();
     this.getAlladver();
+    this.getFindAccount();
   },
 
   computed: {
@@ -832,7 +835,10 @@ export default {
         this.getWeek(this.mytitleaccount.accNum);
         
         this.tradeFive(this.mytitleaccount.accNum);
+        this.curcard = this.mytitleaccount.card;
         this.withdrawbalance = this.mytitleaccount.balance;
+
+        console.log(this.mytitleaccount)
         
       })
     },

@@ -135,7 +135,8 @@
                     </v-card-title>
 
                     <v-card-text class="headline font-weight-bold" style = "margin-top : 50px; margin-bottom : 50px;" v-if="receivaccount.length != 0">
-                      {{receivaccount.ownerName}} ({{receivaccount.accNum | acc}})
+                      {{receivaccount.ownerName}} 
+                      <div>({{receivaccount.accNum | acc}}) </div>
                     </v-card-text>
 
                     
@@ -198,9 +199,11 @@
                             </v-list-item-avatar>
                               <v-list-item-content>
                               <v-list-item-title>
-                                계좌번호 : {{item.accNum | acc}}
+                                  <h4>{{item.ownerName}} </h4>
                               </v-list-item-title>
-                                <v-list-item-subtitle> {{item.ownerName}} </v-list-item-subtitle>
+                                <v-list-item-subtitle> 
+                                  계좌번호 : {{item.accNum | acc}}
+                                </v-list-item-subtitle>
                               </v-list-item-content>
                             </v-list-item>
                           </v-list>
@@ -431,6 +434,7 @@ export default {
         setTimeout(() => {
         this.finishflag = false;
         this.getTitleAccount();
+        this.$router.push("/homePage");
       }, 1000);
       })
       

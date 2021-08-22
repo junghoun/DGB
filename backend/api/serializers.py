@@ -15,7 +15,7 @@ class UserSerializer(serializers.ModelSerializer):
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ('aId', 'accNum', 'password', 'balance', 'ownerId', 'ownerName', 'title')
+        fields = ('aId', 'accNum', 'password', 'balance', 'ownerId', 'ownerName', 'title', 'card')
 
 
 class AdvertisingSerializer(serializers.ModelSerializer):

@@ -66,7 +66,7 @@ export default {
 .right {
   position : fixed;
   display: inline-block;
-  margin-left : 1500px;
+  margin-left : 80%;
   font-size : 15px;
   font-family:'Jua';
 }

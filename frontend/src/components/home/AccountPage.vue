@@ -190,9 +190,9 @@ export default {
       }, 1000);
       }else{
         
-        this.addAcc(1, this.pw);
+        this.addAcc(this.card, this.pw);
         
-        this.$router.go();
+        
       }
     },
     async addAcc(type, password) {
@@ -202,11 +202,12 @@ export default {
       }
       console.log(AccData)
       await this.INSERT_ACCOUNT(AccData).then(() => {
+          this.finish = true;
+          setTimeout(() => {
+          this.finish = false;
+          this.$router.push("/homePage");
+        }, 1000);
       })
-      this.finish = true;
-      setTimeout(() => {
-        this.finish = false;
-      }, 1000);
     }
 
   },

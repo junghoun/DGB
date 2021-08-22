@@ -28,6 +28,7 @@ class Account(models.Model):
     ownerId = models.CharField(max_length=20)                   # 보유자 아이디
     ownerName = models.CharField(max_length = 50)               # 보유자 이름
     title = models.IntegerField()                               # 대표 계좌 유무
+    card = models.CharField(max_length = 50, null = True)
 
 
     def __str__(self):

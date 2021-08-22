@@ -153,7 +153,7 @@ def findaccount(request) :
         value = int(value)
         queryset = Account.objects.filter(Q(accNum = value));
     else :
-        queryset = Account.objects.filter(Q(ownerName = value));
+        queryset = Account.objects.filter(ownerName__contains = value);
 
     print(queryset)
 
@@ -440,11 +440,11 @@ def recordlist(request):
 def addaccount(request) :
 
     
-    type = request.data['type']
+    card = request.data['type']
 
-    if type == 1:
-        user = token_vaild(request)
-        print(user)
+
+    user = token_vaild(request)
+    print(user)
 
     password = request.data['password']
 
@@ -459,18 +459,18 @@ def addaccount(request) :
 
     acc = cursor.fetchone()[0] + 123
 
-    if type == 1:
+    
 
-        sql = "select count(*) from api_account where ownerId = '"+ str(user.id)+"' and title = 1";
+    sql = "select count(*) from api_account where ownerId = '"+ str(user.id)+"' and title = 1";
 
-        cursor.execute(sql)
+    cursor.execute(sql)
 
-        cnt = cursor.fetchone()[0]
+    cnt = cursor.fetchone()[0]
 
-        if cnt == 0 :
-            sql = "insert into api_account (accNum, password, balance, ownerId, ownerName, title) values ('"+ str(acc) +"', " + str(password) + ", 0, '"+ str(user.id)+"', '"+ str(user.userName)+"', 1)"
-        else:
-            sql = "insert into api_account (accNum, password, balance, ownerId, ownerName, title) values ('"+ str(acc) +"', " + str(password) + ", 0, '"+ str(user.id)+"', '"+ str(user.userName)+"', 0)"
+    if cnt == 0 :
+        sql = "insert into api_account (accNum, password, balance, ownerId, ownerName, card, title) values ('"+ str(acc) +"', " + str(password) + ", 0, '"+ str(user.id)+"', '"+ str(user.userName)+"', '"+ str(card)+"', 1)"
+    else:
+        sql = "insert into api_account (accNum, password, balance, ownerId, ownerName, card, title) values ('"+ str(acc) +"', " + str(password) + ", 0, '"+ str(user.id)+"', '"+ str(user.userName)+"', '"+ str(card)+"', 0)"
 
         
     

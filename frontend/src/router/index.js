@@ -34,18 +34,22 @@ const router = new VueRouter({
         {
             path: "/adver",
             component: () => import("@/views/Adver.vue"),
+            meta: { auth: true },
         },
         {
             path: "/remit",
             component: () => import("@/views/Remit.vue"),
+            meta: { auth: true },
         },
         {
             path: "/trans",
             component: () => import("@/views/Trans.vue"),
+            meta: { auth: true },
         },
         {
             path: "/account",
             component: () => import("@/views/Account.vue"),
+            meta: { auth: true },
         },
     ]
 });
